@@ -4,7 +4,9 @@ WORKDIR /app
 
 COPY stonewall-api/ .
 RUN go mod tidy
-RUN go build -v -o main
+RUN go mod vendor
+
+RUN  go build -mod vendor -o main
 
 FROM golang:1.21.0-alpine
 
